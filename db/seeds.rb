@@ -5,3 +5,25 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+categories = Category.create([
+
+	{ name: "History"},
+	{ name: "Biology"},
+	{ name: "Literature"},
+	{ name: "Mathematics"},
+	{ name: "Music Theory"},
+	{ name: "Sports"},
+	{ name: "Computer Science"},
+	{ name: "Chemistry"}
+])
+
+for i in 0..49
+
+	title = Faker::Lorem.sentence(rand(2..10)).chomp('.')
+	content = Faker::Lorem.paragraph(word_count=250)
+
+	category = Category.all.sample
+	a = Article.create(title: title, content: content, categories: [category,])
+
+end
